@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204184816) do
+ActiveRecord::Schema.define(version: 20151207222811) do
 
   create_table "moves", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20151204184816) do
     t.decimal  "amount"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "patrimonies", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "value"
+    t.string   "kind"
+    t.string   "acquisition_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end

@@ -2,7 +2,7 @@ class Api::MovesController < ApplicationController
     respond_to :json
     PER_PAGE_RECORDS = 10 # Registros mostrados por pagina
 
-    skip_before_filter :verify_authenticity_token # To avoid send authenticity token
+    # skip_before_filter :verify_authenticity_token # To avoid send authenticity token
 
     def index
         moves_paginated = Move.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
