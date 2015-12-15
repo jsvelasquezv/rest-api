@@ -31,6 +31,17 @@ gem 'responders'
 #Cross origin resorce sharing
 gem 'rack-cors', :require => 'rack/cors'
 
+# Authtentication Gems
+
+
+gem 'devise_token_auth'
+
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+
+# gem 'omniauth-google-oauth2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

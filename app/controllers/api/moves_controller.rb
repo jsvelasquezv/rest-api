@@ -1,7 +1,7 @@
 class Api::MovesController < ApplicationController
     respond_to :json
     PER_PAGE_RECORDS = 10 # Registros mostrados por pagina
-
+    before_action :authenticate_user!
     # skip_before_filter :verify_authenticity_token # To avoid send authenticity token
 
     def index
@@ -35,6 +35,6 @@ class Api::MovesController < ApplicationController
     private
 
     def move_params
-        params.permit(:id, :name, :description, :amount)
+        params.permit(:id, :name, :description, :amount, :user_id)
     end
 end

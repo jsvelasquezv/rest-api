@@ -12,7 +12,10 @@ module RailsApi
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins 'localhost'
-        resource '*', :headers => :any, :methods => [:post, :get, :put, :delete]
+        resource '*', :headers => :any,
+                      :methods => [:get, :post, :delete, :put, :options, :head],
+                      :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                      :max_age => 0
       end
     end
     # Settings in config/environments/* take precedence over those specified here.

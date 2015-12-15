@@ -1,7 +1,7 @@
 class Api::PatrimoniesController < ApplicationController
     respond_to :json
     PER_PAGE_RECORDS = 10 # Registros mostrados por pagina
-
+    # before_action :authenticate_user!
     # skip_before_filter :verify_authenticity_token # To avoid send authenticity token
 
     def index
@@ -16,7 +16,8 @@ class Api::PatrimoniesController < ApplicationController
     end
 
     def create
-        patrimony = Patrimony.create(patrimony_params)
+        patrimony = current_user.patrimonies.create(patrimony_params)
+        # patrimony = Patrimony.create(patrimony_params)
         respond_with patrimony, location: nil
     end
 
@@ -35,6 +36,6 @@ class Api::PatrimoniesController < ApplicationController
     private
 
     def patrimony_params
-        params.permit(:id, :name, :value, :kind, :value, :acquisition_date)
+        params.permit(:id, :name, :value, :kind, :value, :acquisition_date, :user_id)
     end
 end
