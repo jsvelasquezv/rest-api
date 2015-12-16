@@ -5,7 +5,7 @@ class Api::MovesController < ApplicationController
     # skip_before_filter :verify_authenticity_token # To avoid send authenticity token
 
     def index
-        moves_paginated = Move.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
+        moves_paginated = current_user.moves.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
         json_response = {
             models: moves_paginated, # Resultado de la consulta
             current_page: params[:page].to_i,
