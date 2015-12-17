@@ -1,11 +1,11 @@
 class Api::PatrimoniesController < ApplicationController
     respond_to :json
     PER_PAGE_RECORDS = 10 # Registros mostrados por pagina
-    # before_action :authenticate_user!
+    before_action :authenticate_user!
     # skip_before_filter :verify_authenticity_token # To avoid send authenticity token
 
     def index
-        patrimonies_paginated = Patrimony.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
+        patrimonies_paginated = current_user.patrimonies.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
         json_response = {
             models: patrimonies_paginated, # Resultado de la consulta
             current_page: params[:page].to_i,
